@@ -21,14 +21,34 @@ def play():
 			# guess = [x if x != '_' else x for x in temp]
 			pretty_print(guess)
 		else:
+			lose_life(letter)
+			# life -= 1
+			# user_guesses += letter
+			# #fix pluralirty
+			# #put this in a function. test whether the guess was already in the "guessed letters" one. >> take care of it
+			# print('Incorrect letter. You have ' + str(life) + ' guesses remaining.')
+			# print('')
+			# pretty_print(guess)
+
+		print(' ')
+
+	def lose_life(letter):
+		nonlocal user_guesses, life, guess
+		if letter in user_guesses:
+			print('You have already guessed this letter.')
+			print(user_guesses)
+		else: 
 			life -= 1
-			user_guesses += letter
-			#fix pluralirty
-			#put this in a function. test whether the guess was already in the "guessed letters" one. >> take care of it
-			print('Incorrect letter. You have ' + str(life) + ' guesses remaining.')
+			user_guesses += [letter] 
+			plurality(life)
 			print('')
 			pretty_print(guess)
-		print(' ')
+
+	def plurality(life): 
+		if life == 1:
+			print('Incorrect letter. You have 1 life remaining.')
+		else:
+			print('Incorrect letter. You have ' + str(life) + ' lives remaining.')
 
 	def exity():
 		print('Would you like to exit the game? (Y/N)')
