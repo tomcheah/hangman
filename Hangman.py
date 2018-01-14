@@ -1,9 +1,13 @@
+import os
+
 def play():
+
 	def guess_func():
 		nonlocal user_guesses, life, guess
 		print('Incorrect letters: ' + str(user_guesses))
 		print('Guess a letter.')
 		letter = input()
+
 		if letter == 'exit()':
 			exity()
 
@@ -16,7 +20,6 @@ def play():
 			for index in range(len(word)): 
 				if letter == word_bank[index]:
 					guess[index] = letter
-
 			pretty_print(guess)
 		else:
 			lose_life(letter)
@@ -54,8 +57,11 @@ def play():
 	print('Welcome to Hangman!')
 	print('Type in a word.')
 	word = input()
+
 	for x in range(25):
 		print('')
+	os.system('cls' if os.name == 'nt' else 'clear') #Clearing the screen.
+
 
 	word_bank = [letter for letter in word]
 	guess = ['_' for letter in word]
@@ -85,7 +91,7 @@ def pretty_print(guess_list):
 		print(letter, end = ' ')
 	print('')
 
-
+play()
 # print('_________')
 # print('|        |')
 # print('|        |')
