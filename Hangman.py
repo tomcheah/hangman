@@ -10,26 +10,16 @@ def play():
 		if len(letter) > 1:
 			print('Invalid input. Please try again.')
 			print('')
-			guess_func()
+			return
 
 		if letter in word_bank:
 			for index in range(len(word)): 
 				if letter == word_bank[index]:
 					guess[index] = letter
 
-			# temp = [letter if letter == x else '_' for x in word_bank]
-			# guess = [x if x != '_' else x for x in temp]
 			pretty_print(guess)
 		else:
 			lose_life(letter)
-			# life -= 1
-			# user_guesses += letter
-			# #fix pluralirty
-			# #put this in a function. test whether the guess was already in the "guessed letters" one. >> take care of it
-			# print('Incorrect letter. You have ' + str(life) + ' guesses remaining.')
-			# print('')
-			# pretty_print(guess)
-
 		print(' ')
 
 	def lose_life(letter):
