@@ -26,13 +26,15 @@ def play():
 		print(' ')
 
 	def lose_life(letter):
-		nonlocal user_guesses, life, guess
+		nonlocal user_guesses, life, guess, gui_response
 		if letter in user_guesses:
 			print('You have already guessed this letter.')
 			print(user_guesses)
 		else: 
 			life -= 1
-			user_guesses += [letter] 
+			user_guesses += [letter]
+			if gui_response == True:
+				print_man(life) 
 			plurality(life)
 			print('')
 			pretty_print(guess)
@@ -55,6 +57,14 @@ def play():
 	life = 6
 
 	print('Welcome to Hangman!')
+	print('Would you like to play a graphical version of the game? (Y/N)')
+	gui = input()
+	gui_response = True
+	if gui == 'Y':
+		gui_response = True
+	else:
+		gui_response = False
+
 	print('Type in a word.')
 	word = input()
 
@@ -65,6 +75,10 @@ def play():
 
 	word_bank = [letter for letter in word]
 	guess = ['_' for letter in word]
+
+	if gui_response == True:
+		print_man(life)
+
 	pretty_print(guess)
 	print('') 
 	print('The word is ' + str(len(guess)) + ' letters long.')
@@ -91,18 +105,87 @@ def pretty_print(guess_list):
 		print(letter, end = ' ')
 	print('')
 
+def print_man(life):
+	if life == 0: 
+		print('_________')
+		print('|        |')
+		print('|        |')
+		print('|        ☹')
+		print("|       /|\\")
+		print('|       / \\')
+		print('|         ')
+		print('|         ')
+		print('|         ')
+		print('|____')
+	if life == 1: 
+		print('_________')
+		print('|        |')
+		print('|        |')
+		print('|        O')
+		print("|       /|\\")
+		print('|       / ')
+		print('|         ')
+		print('|         ')
+		print('|         ')
+		print('|____')	
+	if life == 2: 
+		print('_________')
+		print('|        |')
+		print('|        |')
+		print('|        O')
+		print("|       /|\\")
+		print('|       	 ')
+		print('|         ')
+		print('|         ')
+		print('|         ')
+		print('|____')
+	if life == 3: 
+		print('_________')
+		print('|        |')
+		print('|        |')
+		print('|        O')
+		print("|       /|")
+		print('|         ')
+		print('|         ')
+		print('|         ')
+		print('|         ')
+		print('|____')
+	if life == 4: 
+		print('_________')
+		print('|        |')
+		print('|        |')
+		print('|        O')
+		print("|       / ")
+		print('|         ')
+		print('|         ')
+		print('|         ')
+		print('|         ')
+		print('|____')
+	if life == 5: 
+		print('_________')
+		print('|        |')
+		print('|        |')
+		print('|        O')
+		print("|         ")
+		print('|         ')
+		print('|         ')
+		print('|         ')
+		print('|         ')
+		print('|____')	
+	if life == 6: 
+		print('_________')
+		print('|        |')
+		print('|        |')
+		print('|         ')
+		print("|         ")
+		print('|         ')
+		print('|         ')
+		print('|         ')
+		print('|         ')
+		print('|____')
+			
 play()
-# print('_________')
-# print('|        |')
-# print('|        |')
-# print('|        O')
-# print("|       /|\\")
-# print('|        |')
-# print('|       / \\')
-# print('|         ')
-# print('|         ')
-# print('|         ')
-# print('|____')
+
 
 
 
